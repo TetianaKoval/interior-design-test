@@ -197,7 +197,7 @@ body._touch .menu__list > li._active .menu__sub-list {
   display: block;
   width: 40px;
   height: 40px;
-  background-image: url("../../img/ID_logo.png");
+  background-image: url("../img/ID_logo.png");
 }
 
 .menu * {
