@@ -490,7 +490,7 @@ body._touch .menu__list > li._active .menu__sub-list {
   margin: 0 auto;
   max-width: 570px;
   height: 380px;
-  background-image: url("../../img/our-company-office.png");
+  background-image: url("../img/our-company-office.png");
   background-size: cover;
   background-position: center;
 }
