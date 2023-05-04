@@ -1,0 +1,50 @@
+.title-block {
+  &__title{
+    position: relative;
+    z-index: 3;
+    font-family: "Muli-Bold";
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    text-transform: uppercase;
+    margin-bottom: 38px;
+    color: $fontColorLight;
+
+    @include onMiddle() {
+      font-size: 50px;
+    }
+    @include onLarge() {
+      font-size: 60px;
+    }
+  }
+
+  &__breadcrumbs {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 7.5px;
+  }
+
+  &__link{
+    font-size: 20px;
+    font-family: "Muli-Regular";
+    cursor: pointer;
+    color: $fontColorLight;
+
+    &--active{
+      color: $activeColor
+    }
+
+    @include onMiddle() {
+      font-size: 18px;
+    }
+    @include onLarge() {
+      font-size: 16px;
+    }
+  }
+
+  &__arrows {
+    font-size: 9px; 
+  }
+}

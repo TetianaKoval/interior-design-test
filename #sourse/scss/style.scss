@@ -1,0 +1,136 @@
+@import 'fonts';
+@import 'base';
+
+@mixin onLarge {
+  @media (min-width: 960px) {
+    @content;
+  }
+}
+
+@mixin onMiddle {
+  @media (min-width: 767px) {
+    @content;
+  }
+}
+
+@mixin onSmall {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@import 'variables';
+@import 'titles';
+
+body {
+  &._lock {
+    overflow: hidden;
+  }
+
+  &._pc {
+    & .menu__list > li:hover .menu__sub-list {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    & .menu__list > li:hover .menu__arrow {
+      transform: rotate(-180deg);
+    }
+
+    & .menu__link {
+        &:hover {
+          color: $activeColor;
+        }
+    
+        &:hover .menu__arrow::before {
+          color: $activeColor;
+        }
+    }
+
+    @include onSmall() {
+      & .menu__list > li:hover .menu__arrow {
+        transform: rotate(0deg);
+      }
+      & .menu__list > li._active .menu__arrow {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  &._touch {
+    & .menu__list > li .menu__sub-list {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: all;
+    }
+
+    & .menu__list > li._active {
+      & .menu__sub-list {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+      }
+    }
+
+    @include onMiddle() {
+      & .menu__list > li._active {
+        & .menu__link {
+          color: $activeColor;
+
+          & .menu__arrow::before {
+            color: $activeColor;
+          }
+        }
+        
+        & .menu__arrow {
+          transform: rotate(-180deg);
+        }
+        
+      }
+    }
+  }
+
+  @include onSmall() {
+    & .menu__list > li:hover .menu__arrow {
+      transform: rotate(0deg);
+    }
+
+    & .menu__list > li._active {
+      & .menu__link {
+        color: $activeColor;
+      }
+
+      & .menu__arrow {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
+
+.page {
+  font-family: "Muli-Regular";
+  font-size: 15px;
+  line-height: 24px;
+  color: $fontColorDark;
+  position: relative;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1170px;
+  box-sizing: content-box;
+  padding: 0 20px;
+}
+
+@import 'header';
+@import 'menu';
+@import 'main';
+@import 'title-block';
+@import 'about';
+@import 'services';
+@import 'footer';

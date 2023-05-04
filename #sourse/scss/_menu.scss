@@ -1,0 +1,230 @@
+.menu {
+  & * {
+    color: $fontColorLight;
+    transition: all 0.3s ease;
+  }
+
+  &__list > li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  &__sub-list {
+    position: absolute;
+    top: 100%;
+    background-color: $bgColorDark;
+    right: 0;
+    border-top: 4px solid $activeColor;
+    width: max-content;
+    z-index: 6;
+
+
+    & > li {
+      padding: 15px 20px;
+      position: relative;
+      background-color: $bgColorDark;
+
+    }
+
+    & > li::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $bgColorLightGrey;
+    }
+
+    & > li:last-child::after {
+      display: none;
+    }
+  }
+
+  &__arrow {
+    display: inline-block;
+    font-size: 5px;
+
+    &::before {
+      transition: all 0.5s ease;
+      color: #fff;
+    }
+  }
+
+  &__icon {
+    display: none;
+
+    @include onSmall(){
+      z-index: 6;
+      display: block;
+      position: relative;
+      width: 30px;
+      height: 18px;
+      cursor: pointer;
+
+      &::before, &::after, & span {
+        display: block;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 10%;
+        transition: all 0.3s ease;
+        background-color: $fontColorLight;
+      }
+
+      &::before, &::after {
+        content: '';
+      }
+
+      &::before {
+        top: 0;
+      }
+
+      &::after {
+        bottom: 0;
+      }
+
+      & span {
+        top: 50%;
+        transform: scale(1) translateY(-50%);
+      }
+
+      &._open-menu {
+        & span {
+          transform: scale(0) translateY(-50%);
+        }
+
+        &::before {
+          top: 50%;
+          transform: rotate(45deg) translate(0, -50%);
+        }
+  
+        &::after {
+          bottom: 50%;
+          transform: rotate(-45deg) translate(0, 50%);
+        }
+      }
+    }
+  }
+
+  @include onSmall() {
+    &__body {
+      z-index: 5;
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: $bgColorDark;
+      padding: 30px;
+      transition: left 0.5s ease;
+      overflow: auto;
+
+      &._open-menu {
+        left: 0;
+      }
+    }
+
+    &__list > li {
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+
+      :last-child {
+        margin-bottom: 0;
+      }
+
+      &._active {
+        & .menu__sub-list {
+          display: block;
+        }
+        
+        & .menu__arrow::before {
+          color: $activeColor;
+        }
+       }
+    }
+
+    &__link {
+      font-size: 24px;
+    }
+
+    &__sub-list {
+      position: relative;
+      font-size: 22px;
+      flex: 1 1 100%;
+      display: none;
+      margin-top: 10px;
+
+      & > li {
+        background-color: $bgColorLightGrey;
+        border-bottom: 2px solid $fontColorDark;
+      }
+      
+    }
+  }
+
+  @include onMiddle() {
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    &__list > li {
+      padding: 25px 0;
+    }
+
+    &__sub-list {
+      transform: translate(0px, 0px);
+      opacity: 0;
+      visibility: hidden;
+      // pointer-events: none;
+      transition: all 0.5s ease;
+      min-width: 200px;
+
+      &:hover {
+        color: $activeColor;
+      }
+
+      & > li:hover {
+        background-color: $bgColorLightGrey;
+        color: $activeColor;
+      }
+    }
+  }
+
+  @include onLarge() {
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 74px;
+    }
+  }
+
+}
+
+.sub-list {
+  &__link:hover {
+    color: $activeColor;
+  }
+}
+
+.select {
+  & > .menu__link {
+    color: $activeColor;
+  }
+
+  & .menu__arrow::before {
+    color: $activeColor;
+  }
+}

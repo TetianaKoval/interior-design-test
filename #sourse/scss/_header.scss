@@ -1,0 +1,30 @@
+.header {
+  width: 100%;
+  background-color: $bgColorDark;
+  min-height: 70px;
+  display: flex;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  &__logo {
+    display: flex;
+    height: 40px;
+    color: $fontColorLight;
+    background-repeat: no-repeat;
+    gap: 17px;
+    align-items: center;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      background-image: url("./../../img/ID_logo.png");
+    }
+  }
+}
